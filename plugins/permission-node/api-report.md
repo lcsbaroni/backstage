@@ -9,13 +9,16 @@ import { BackstageIdentity } from '@backstage/plugin-auth-backend';
 import { PermissionCondition } from '@backstage/permission-common';
 import { PermissionCriteria } from '@backstage/permission-common';
 import { Router } from 'express';
+import { z } from 'zod';
 
 // @public
-export type ApplyConditionsRequest = {
-  resourceRef: string;
-  resourceType: string;
-  conditions: PermissionCriteria<PermissionCondition>;
-};
+export type ApplyConditionsRequest = z.infer<ApplyConditionsRequestSchema>;
+
+// Warning: (ae-forgotten-export) The symbol "applyConditionsRequestSchema" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "ApplyConditionsRequestSchema" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type ApplyConditionsRequestSchema = typeof applyConditionsRequestSchema;
 
 // Warning: (ae-unresolved-link) The @link reference could not be resolved: The package "@backstage/plugin-permission-node" does not have an export "AuthorizeResult"
 //
@@ -111,6 +114,6 @@ export type PolicyResult =
 
 // Warnings were encountered during analysis:
 //
-// src/integration/createPermissionIntegration.d.ts:38:5 - (ae-forgotten-export) The symbol "QueryType" needs to be exported by the entry point index.d.ts
-// src/integration/createPermissionIntegration.d.ts:39:5 - (ae-forgotten-export) The symbol "Conditions" needs to be exported by the entry point index.d.ts
+// src/integration/createPermissionIntegration.d.ts:39:5 - (ae-forgotten-export) The symbol "QueryType" needs to be exported by the entry point index.d.ts
+// src/integration/createPermissionIntegration.d.ts:40:5 - (ae-forgotten-export) The symbol "Conditions" needs to be exported by the entry point index.d.ts
 ```
